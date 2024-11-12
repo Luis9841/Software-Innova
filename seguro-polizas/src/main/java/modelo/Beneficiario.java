@@ -15,7 +15,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "beneficiarios")
-public class Beneficiario {
+public class Beneficiario 
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -85,7 +86,5 @@ public class Beneficiario {
 
 	public void setPoliza(Poliza poliza) {
 		this.poliza = poliza;
-	}
-    
-    
+	}    
 }

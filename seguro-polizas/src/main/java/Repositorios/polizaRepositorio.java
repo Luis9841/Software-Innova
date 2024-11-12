@@ -1,3 +1,4 @@
+package Repositorios;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import modelo.Poliza;
@@ -5,7 +6,8 @@ import modelo.Poliza;
 import java.util.List;
 
 @Repository
-public interface polizaRepositorio extends JpaRepository<Poliza, String> {
+public interface polizaRepositorio extends JpaRepository<Poliza, String> 
+{
 
     // Método para encontrar pólizas por CURP del cliente
     List<Poliza> findByCurpCliente(String curp);

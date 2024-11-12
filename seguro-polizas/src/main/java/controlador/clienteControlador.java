@@ -11,7 +11,7 @@ import Servicios.ClienteService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/clientes")
 
 public class clienteControlador 
 {
