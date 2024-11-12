@@ -13,7 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 
-public class clienteControlador {
+public class clienteControlador 
+{
     @Autowired
     private ClienteService clienteService;
 
@@ -95,7 +96,8 @@ public class clienteControlador {
     @GetMapping("/clientes/buscar")
     public ResponseEntity<List<Cliente>> buscarClientes(
             @RequestParam(required = false) String nombre,
-            @RequestParam(required = false) String apellidos) {
+            @RequestParam(required = false) String apellidos) 
+    {
         try {
             List<Cliente> clientes = clienteService.buscarPorNombreOApellidos(nombre, apellidos);
             return ResponseEntity.ok(clientes);
@@ -104,15 +106,3 @@ public class clienteControlador {
         }
     }
 }
-sdfsdvhsivhsdvdssvhkdsvhdsklvsdl
-sdclsdnsdlvdslvsdkl
-svosñvosdvdss
-sçsvsñdjvdsvlss
-vds
-v
-sdv
-dsv
-v
-ds
-
-

@@ -25,15 +25,19 @@ public class ClienteService
     }
 
 
-    public void guardar(Cliente cliente)
+    public Cliente guardar(Cliente cliente)
     {
         System.out.println("Cliente Guardado...");
+        return cliente;
     }
 
 
-    public void actualizar(Cliente cliente)
+    public Cliente actualizar(Cliente cliente)
     {
+        Cliente cliente2 = cliente;        
         System.out.println("Cliente Actualizado...");
+
+        return cliente2;
     }
 
     public void eliminarPorCurp(String curp)
