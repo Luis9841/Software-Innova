@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pólizas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Gestión de Pólizas</h1>
+        
+        <!-- Formulario para Agregar Póliza -->
+        <div class="card mb-4">
+            <div class="card-header">Agregar Nueva Póliza</div>
+            <div class="card-body">
+                <form th:action="@{/api/polizas}" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="clave">Clave</label>
+                            <input type="text" class="form-control" id="clave" name="clave" placeholder="Clave de la póliza" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="tipo">Tipo</label>
+                            <select class="form-control" id="tipo" name="tipo" required>
+                                <option value="0">Auto</option>
+                                <option value="1">Vida</option>
+                                <option value="2">Médico</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="monto">Monto Asegurado</label>
+                        <input type="number" class="form-control" id="monto" name="monto" placeholder="Monto asegurado" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción de la póliza"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="curp_cliente">CURP del Cliente</label>
+                        <input type="text" class="form-control" id="curp_cliente" name="curp_cliente" placeholder="CURP del cliente asociado" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Póliza</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tabla de Pólizas -->
+        <div class="card">
+            <div class="card-header">Lista de Pólizas</div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Clave</th>
+                            <th>Tipo</th>
+                            <th>Monto Asegurado</th>
+                            <th>Descripción</th>
+                            <th>CURP Cliente</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="poliza : ${polizas}">
+                            <td th:text="${poliza.clave}"></td>
+                            <td th:text="${poliza.tipo == 0 ? 'Auto' : poliza.tipo == 1 ? 'Vida' : 'Médico'}"></td>
+                            <td th:text="${poliza.monto}"></td>
+                            <td th:text="${poliza.descripcion}"></td>
+                            <td th:text="${poliza.cliente.curp}"></td>
+                            <td>
+                                <!-- Botón de Eliminar -->
+                                <form th:action="@{/api/polizas/{clave}(clave=${poliza.clave})}" method="post" th:onsubmit="return confirm('¿Está seguro de que desea eliminar esta póliza?');">
+                                    <input type="hidden" name="_method" value="delete"/>
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
