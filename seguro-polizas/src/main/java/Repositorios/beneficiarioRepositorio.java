@@ -9,7 +9,7 @@ public interface beneficiarioRepositorio
 
     public Beneficiario obtenerPorCurp(String curp);
     public List<Beneficiario> obtenerTodos();
-    public Beneficiario guardar(Beneficiario guardar);
+    public Beneficiario guardar(Beneficiario beneficiario);
     public Beneficiario actualizar(Beneficiario beneficiario);
     public void eliminarPorCurp(String curp);
     public List<Poliza> obtenerPolizaDeBeneficiario(String curp);

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Beneficiarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Gestión de Beneficiarios</h1>
+        
+        <!-- Formulario para Agregar Cliente -->
+        <div class="card mb-4">
+            <div class="card-header">Agregar Nuevo Beneficiario</div>
+            <div class="card-body">
+                <form th:action="@{/api/clientes}" method="post">                   
+                    <div class="form-group">
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" class="form-control" id="monto" name="Nombre" placeholder="Nombre: " required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apPaterno">Apellido Paterno</label>
+                        <input type="text" class="form-control" id="monto" name="apPaterno" placeholder="Apellido Paterno" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apMaterno">Apellido Materno</label>
+                        <input type="text" class="form-control" id="curp_cliente" name="apMaterno" placeholder="Apellido Materno" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="curp">CURP</label>
+                        <input type="text" class="form-control" id="curp_cliente" name="CURP" placeholder="CURP" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Beneficiario</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tabla de Beneficiarios -->
+        <div class="card">
+            <div class="card-header">Lista de Beneficiarios</div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>CURP</th>
+                            <th>Nombre</th>
+                            <th>Apellido Paterno</th>
+                            <th>Apellido Materno</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="beneficiario : ${beneficiarios}">
+                            <td th:text="${beneficiario.curp}"></td>                            
+                            <td th:text="${beneficiario.Nombre}"></td>
+                            <td th:text="${beneficiario.apPaterno}"></td>
+                            <td th:text="${beneficiario.apMaterno}"></td>
+                            <td>
+                                <!-- Botón de Eliminar -->
+                                <form th:action="@{/api/beneficiario/{clave}(clave=${beneficiario.curp})}" method="post" th:onsubmit="return confirm('¿Está seguro de que desea eliminar este beneficiario?');">
+                                    <input type="hidden" name="_method" value="delete"/>
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -10,19 +10,22 @@ public class BeneficiarioService implements beneficiarioRepositorio
 {
 
     @Override
-    public Beneficiario obtenerPorCurp(String curp) {
+    public Beneficiario obtenerPorCurp(String curp) 
+    {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'obtenerPorCurp'");
     }
 
     @Override
-    public List<Beneficiario> obtenerTodos() {
+    public List<Beneficiario> obtenerTodos() 
+    {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'obtenerTodos'");
     }
 
     @Override
-    public Beneficiario guardar(Beneficiario guardar) {
+    public Beneficiario guardar(Beneficiario beneficiario) 
+    {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'guardar'");
     }

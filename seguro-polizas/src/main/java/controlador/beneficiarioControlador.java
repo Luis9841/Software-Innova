@@ -1,5 +1,11 @@
 package controlador;
 
-public class beneficiarioControlador {
 
+import modelo.Beneficiario;
+import modelo.Poliza;
+import Servicios.BeneficiarioService;
+
+public class beneficiarioControlador 
+{
+    
 }
