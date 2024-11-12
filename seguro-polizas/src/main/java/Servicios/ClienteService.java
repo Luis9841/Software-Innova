@@ -3,8 +3,9 @@ import java.util.List;
 
 import modelo.Cliente;
 import modelo.Poliza;
+import Repositorios.clienteRepositorio;
 
-public class ClienteService 
+public class ClienteService implements clienteRepositorio
 {
  
     public Cliente obtenerPorCurp(String curp)
