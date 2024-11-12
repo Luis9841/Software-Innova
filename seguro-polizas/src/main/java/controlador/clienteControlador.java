@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import modelo.Cliente;
 import modelo.Poliza;
+import Servicios.ClienteService;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class clienteControlador {
     @PostMapping("/cliente")
     public ResponseEntity<Cliente> registrarCliente(@RequestBody Cliente cliente) {
         try {
-            Cliente nuevoCliente = clienteService.guardar(cliente);
+            Cliente nuevoCliente = clienteService.guardar(cliente); // Guardar NO genera un cliente...
             return ResponseEntity.ok(nuevoCliente);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
@@ -61,7 +62,7 @@ public class clienteControlador {
             if (!curp.equals(cliente.getCurp())) {
                 return ResponseEntity.badRequest().build();
             }
-            Cliente clienteActualizado = clienteService.actualizar(cliente);
+            Cliente clienteActualizado = clienteService.actualizar(cliente); // una ACTUALIZACIÓN NO genera un nuevo cliente...
             return ResponseEntity.ok(clienteActualizado);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
