@@ -1,4 +1,5 @@
 package Servicios;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import modelo.Poliza;
@@ -8,7 +9,7 @@ import java.util.Optional;
 import Repositorios.polizaRepositorio;
 
 @Service
-public class polizaServicio {
+public class polizaService {
 
     @Autowired
     private polizaRepositorio polizaRepositorio;

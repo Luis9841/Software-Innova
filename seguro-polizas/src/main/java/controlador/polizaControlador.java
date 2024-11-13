@@ -1,9 +1,10 @@
 package controlador;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import modelo.Poliza;
-import Servicios.polizaServicio;
+import Servicios.polizaService;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class polizaControlador {
 
     @Autowired
-    private polizaServicio polizaServicio;
+    private polizaService polizaServicio;
 
     // Endpoint para obtener pólizas por CURP del cliente
     @GetMapping("/cliente/{curp}")
