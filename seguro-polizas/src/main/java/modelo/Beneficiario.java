@@ -1,7 +1,7 @@
 package modelo;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -15,21 +15,20 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "beneficiarios")
-public class Beneficiario 
-{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nombres;
-    private String apPaterno;
-    private String apMaterno;
-    @Column(name = "fecha_nacimiento")
-    private LocalDate fechaNacimiento;
-    private BigDecimal porcentaje;
-    
-    @ManyToOne
-    @JoinColumn(name = "clave_poliza")
-    private Poliza poliza;
+public class Beneficiario {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String nombres;
+	private String apPaterno;
+	private String apMaterno;
+	@Column(name = "fecha_nacimiento")
+	private LocalDate fechaNacimiento;
+	private BigDecimal porcentaje;
+
+	@ManyToOne
+	@JoinColumn(name = "clave_poliza")
+	private Poliza poliza;
 
 	public Long getId() {
 		return id;
@@ -46,7 +45,6 @@ public class Beneficiario
 	public void setNombres(String nombres) {
 		this.nombres = nombres;
 	}
-
 
 	public String getApPaterno() {
 		return apPaterno;
@@ -86,5 +84,5 @@ public class Beneficiario
 
 	public void setPoliza(Poliza poliza) {
 		this.poliza = poliza;
-	}    
+	}
 }
